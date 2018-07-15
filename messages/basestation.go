@@ -4,8 +4,6 @@ import (
 	"time"
 )
 
-// Type 4
-
 // A Base Station Report is used for reporting UTC time and date and, at the
 // same time, position.
 //
@@ -14,10 +12,15 @@ import (
 //
 // https://www.navcen.uscg.gov/?pageName=AIS_Base_Station_Report
 type BaseStation struct {
+	// Always Type 4 for a Base Station Report.
 	Type   uint8  `bits:"0:6"`
 	Repeat uint8  `bits:"6:2"`
 	MMSI   uint32 `bits:"8:30"`
 
+	// RawTime is the current date/time as reported by the Base Station.
+	//
+	// If you need to access this information, you may use the `BaseStation.Time`
+	// helper to create a Go `time.Time`.
 	RawTime struct {
 		Year   uint16 `bits:"38:14"`
 		Month  uint8  `bits:"52:4"`

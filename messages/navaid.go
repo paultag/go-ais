@@ -8,6 +8,7 @@ package messages
 //
 // https://www.navcen.uscg.gov/?pageName=AISMessage21
 type NavigationAid struct {
+	// Always Type 21
 	Type   uint8  `bits:"0:6"`
 	Repeat uint8  `bits:"6:2"`
 	MMSI   uint32 `bits:"8:30"`
@@ -40,6 +41,9 @@ type NavigationAid struct {
 	// Reserved
 	// RAIM
 
+	// Is the Aid to Navigation broadcasting the AIS track itself, or is
+	// there a virtual site (maybe ashore) transmiting the location of this
+	// Aid.
 	Virtual bool `bits:"269:1"`
 
 	// AsignedModeFlag
