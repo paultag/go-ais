@@ -33,6 +33,11 @@ func main() {
 		parsed, err := message.Parse()
 		ohshit(err)
 
+		// loc, ok := parsed.(messages.Locatable)
+		// if !ok {
+		// 	continue
+		// }
+
 		ohshit(json.NewEncoder(os.Stdout).Encode(parsed))
 	}
 
