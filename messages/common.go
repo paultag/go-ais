@@ -1,9 +1,24 @@
 package messages
 
+import (
+	"fmt"
+)
+
+//
 type Header struct {
-	Type   uint8  `bits:"0:6"`
-	Repeat uint8  `bits:"6:2"`
-	MMSI   uint32 `bits:"8:30"`
+	//
+	Type uint8 `bits:"0:6"`
+
+	//
+	Repeat uint8 `bits:"6:2"`
+
+	//
+	MMSI uint32 `bits:"8:30"`
+}
+
+//
+func (h Header) String() string {
+	return fmt.Sprintf("type=%d mmsi=%d (repeat=%d)", h.Type, h.MMSI, h.Repeat)
 }
 
 // Any type that has a latitude or longitude.
