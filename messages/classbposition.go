@@ -4,9 +4,7 @@ package messages
 // Less detail than type 1-3
 type ClassBPosition struct {
 	// Always Type 18
-	Type   uint8  `bits:"0:6"`
-	Repeat uint8  `bits:"6:2"`
-	MMSI   uint32 `bits:"8:30"`
+	Header Header
 
 	// Regional reserved
 

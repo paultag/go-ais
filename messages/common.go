@@ -1,5 +1,11 @@
 package messages
 
+type Header struct {
+	Type   uint8  `bits:"0:6"`
+	Repeat uint8  `bits:"6:2"`
+	MMSI   uint32 `bits:"8:30"`
+}
+
 // Any type that has a latitude or longitude.
 type Locatable interface {
 	// Return a standard Location struct from the raw representation

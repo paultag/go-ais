@@ -9,9 +9,7 @@ package messages
 // https://www.navcen.uscg.gov/?pageName=AISMessage21
 type NavigationAid struct {
 	// Always Type 21
-	Type   uint8  `bits:"0:6"`
-	Repeat uint8  `bits:"6:2"`
-	MMSI   uint32 `bits:"8:30"`
+	Header Header
 
 	AidType AidType `bits:"38:5"`
 	Name    string  `bits:"43:120"`

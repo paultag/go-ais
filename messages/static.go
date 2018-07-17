@@ -27,10 +27,9 @@ import (
 // https://www.navcen.uscg.gov/?pageName=AISMessagesB
 type StaticData struct {
 	// Always Type 24.
-	Type       uint8  `bits:"0:6"`
-	Repeat     uint8  `bits:"6:2"`
-	MMSI       uint32 `bits:"8:30"`
-	PartNumber uint8  `bits:"38:2"`
+	Header Header
+
+	PartNumber uint8 `bits:"38:2"`
 
 	PartA StaticDataPartA
 	PartB StaticDataPartB

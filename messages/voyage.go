@@ -7,9 +7,7 @@ package messages
 // https://www.navcen.uscg.gov/?pageName=AISMessagesAStatic
 type Voyage struct {
 	// Always Type 5.
-	Type   uint8  `bits:"0:6"`
-	Repeat uint8  `bits:"6:2"`
-	MMSI   uint32 `bits:"8:30"`
+	Header Header
 
 	// AISVersion uint8    `bits:"38:2"`
 

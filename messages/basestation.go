@@ -13,9 +13,7 @@ import (
 // https://www.navcen.uscg.gov/?pageName=AIS_Base_Station_Report
 type BaseStation struct {
 	// Always Type 4 for a Base Station Report.
-	Type   uint8  `bits:"0:6"`
-	Repeat uint8  `bits:"6:2"`
-	MMSI   uint32 `bits:"8:30"`
+	Header Header
 
 	// RawTime is the current date/time as reported by the Base Station.
 	//

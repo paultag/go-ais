@@ -37,18 +37,18 @@ func TestUnpack(t *testing.T) {
 	slice, err := sixbit.Decode(sixbytes)
 	isok(t, err)
 
-	nav := messages.Navigation{}
+	nav := messages.Position{}
 	isok(t, messages.Unmarshal(slice, &nav))
 
-	assert(t, nav.Type == 0x01, "Unpack message type isn't 1")
-	assert(t, nav.MMSI == 316001245, "MMSI is jacked")
+	assert(t, nav.Header.Type == 0x01, "Unpack message type isn't 1")
+	assert(t, nav.Header.MMSI == 316001245, "MMSI is jacked")
 
 	var lon float32 = -123.877748
 	var lat float32 = 49.200283
 
-	assert(t, nav.Longitude == lon, "long is wrong")
-	assert(t, nav.Latitude == lat, "lat is wrong")
-	assert(t, nav.SpeedOverGround == 19.6, "Speed over ground is wrong")
-	assert(t, nav.CourseOverGround == 235, "Course over ground is wrong")
+	assert(t, nav.RawLocation.Longitude == lon, "long is wrong")
+	assert(t, nav.RawLocation.Latitude == lat, "lat is wrong")
+	assert(t, nav.Speed == 19.6, "Speed over ground is wrong")
+	assert(t, nav.Course == 235, "Course over ground is wrong")
 	assert(t, nav.Heading == 235, "Heading sucks")
 }

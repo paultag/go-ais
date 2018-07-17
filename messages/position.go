@@ -11,9 +11,7 @@ import ()
 // https://www.navcen.uscg.gov/?pageName=AISMessagesA
 type Position struct {
 	// Valid types are 1, 2 or 3.
-	Type       uint8       `bits:"0:6"`
-	Repeat     uint8       `bits:"6:2"`
-	MMSI       uint32      `bits:"8:30"`
+	Header     Header
 	State      VesselState `bits:"38:4"`
 	RateOfTurn int8        `bits:"42:8"`
 	Speed      float32     `bits:"50:10" divisor:"10"`
