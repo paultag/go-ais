@@ -6,20 +6,30 @@ import (
 	"pault.ag/go/ais/sixbit"
 )
 
-//
+// Generic AIS message payload. This will unpack the common data into the
+// Header block, and keep the rest of the data in the Bits attribute,
+// in order to unpack into a more specific type.
 type Message struct {
-	//
+	// Common header elements, such as the MMSI and message Type.
 	Header messages.Header
 
-	//
+	// Opaque bits that can be Unmarshaled via the
+	// Unmarshal helper.
 	Bits *sixbit.BitSlice
 }
 
-//
+// Unpack the internal Bits member into a target. This is the same
+// as doing a `messages.Unmarshal(m.Bits, target)`.
 func (m Message) Unmarshal(target interface{}) error {
 	return messages.Unmarshal(m.Bits, target)
 }
 
+// Dispatch and parse the underlying bits based on the Type of the
+// message.
+//
+// One useful patter would be to check for a specific type -- or a specific
+// interface (such as a messages.Locatable) to extract the information
+// you need.
 func (m Message) Parse() (interface{}, error) {
 	switch m.Header.Type {
 	case 1, 2, 3:
