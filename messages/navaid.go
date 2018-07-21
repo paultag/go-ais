@@ -25,7 +25,7 @@ type NavigationAid struct {
 		Fix Fix `bits:"249:4"`
 	}
 
-	Geometry struct {
+	RawGeometry struct {
 		Bow       uint16 `bits:"219:9"`
 		Stern     uint16 `bits:"228:9"`
 		Port      uint8  `bits:"237:6"`
@@ -47,6 +47,15 @@ type NavigationAid struct {
 	// AsignedModeFlag
 	// Spare
 	// Name xtn
+}
+
+func (na NavigationAid) GetGeometry() Geometry {
+	return Geometry{
+		Bow:       na.RawGeometry.Bow,
+		Stern:     na.RawGeometry.Stern,
+		Port:      na.RawGeometry.Port,
+		Starboard: na.RawGeometry.Starboard,
+	}
 }
 
 func (na NavigationAid) GetHeader() Header {

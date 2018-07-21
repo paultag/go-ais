@@ -16,7 +16,7 @@ type Voyage struct {
 	Name     string    `bits:"112:120"`
 	ShipType ShipType  `bits:"232:8"`
 
-	Geometry struct {
+	RawGeometry struct {
 		Bow       uint16 `bits:"240:9"`
 		Stern     uint16 `bits:"249:9"`
 		Port      uint8  `bits:"258:6"`
@@ -36,6 +36,15 @@ type Voyage struct {
 
 	Draught     float32 `bits:"294:8" divisor:"10"`
 	Destination string  `bits:"302:120"`
+}
+
+func (v Voyage) GetGeometry() Geometry {
+	return Geometry{
+		Bow:       v.RawGeometry.Bow,
+		Stern:     v.RawGeometry.Stern,
+		Port:      v.RawGeometry.Port,
+		Starboard: v.RawGeometry.Starboard,
+	}
 }
 
 func (v Voyage) GetHeader() Header {

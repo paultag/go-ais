@@ -57,3 +57,16 @@ type Location struct {
 	Latitude  float32
 	Fix       Fix
 }
+
+//
+type Geometric interface {
+	GetGeometry() Geometry
+}
+
+// Common Geometry type
+type Geometry struct {
+	Bow       uint16
+	Stern     uint16
+	Port      uint8
+	Starboard uint8
+}

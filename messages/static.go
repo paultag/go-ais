@@ -50,7 +50,7 @@ type StaticDataPartB struct {
 	Serial        uint32   `bits:"70:20"`
 	Callsign      string   `bits:"90:42"`
 
-	Geometry struct {
+	RawGeometry struct {
 		Bow       uint16 `bits:"132:9"`
 		Stern     uint16 `bits:"141:9"`
 		Port      uint8  `bits:"150:6"`
@@ -58,6 +58,15 @@ type StaticDataPartB struct {
 	}
 
 	MothershipMMSI uint32 `bits:"132:30"`
+}
+
+func (sdpb StaticDataPartB) GetGeometry() Geometry {
+	return Geometry{
+		Bow:       sdpb.RawGeometry.Bow,
+		Stern:     sdpb.RawGeometry.Stern,
+		Port:      sdpb.RawGeometry.Port,
+		Starboard: sdpb.RawGeometry.Starboard,
+	}
 }
 
 /* Sweet jesus take the wheel on this one.
