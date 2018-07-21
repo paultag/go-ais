@@ -30,7 +30,11 @@ type ClassBPosition struct {
 	// Message 22 flag
 }
 
-func (cbp ClassBPosition) Location() Location {
+func (cbp ClassBPosition) GetHeader() Header {
+	return cbp.Header
+}
+
+func (cbp ClassBPosition) GetLocation() Location {
 	return Location{
 		Longitude: cbp.RawLocation.Longitude,
 		Latitude:  cbp.RawLocation.Latitude,

@@ -38,5 +38,9 @@ type Voyage struct {
 	Destination string  `bits:"302:120"`
 }
 
+func (v Voyage) GetHeader() Header {
+	return v.Header
+}
+
 // TODO: Add in Checksum and tests for IMO Numbers.
 type IMONumber uint32

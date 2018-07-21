@@ -49,7 +49,11 @@ type NavigationAid struct {
 	// Name xtn
 }
 
-func (na NavigationAid) Location() Location {
+func (na NavigationAid) GetHeader() Header {
+	return na.Header
+}
+
+func (na NavigationAid) GetLocation() Location {
 	return Location{
 		Longitude: na.RawLocation.Longitude,
 		Latitude:  na.RawLocation.Latitude,

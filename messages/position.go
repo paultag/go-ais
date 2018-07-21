@@ -38,7 +38,11 @@ type Position struct {
 	// Radio Status
 }
 
-func (p Position) Location() Location {
+func (p Position) GetHeader() Header {
+	return p.Header
+}
+
+func (p Position) GetLocation() Location {
 	return Location{
 		Longitude: p.RawLocation.Longitude,
 		Latitude:  p.RawLocation.Latitude,

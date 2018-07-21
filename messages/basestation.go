@@ -41,6 +41,10 @@ type BaseStation struct {
 	// SOTDMA
 }
 
+func (bs BaseStation) GetHeader() Header {
+	return bs.Header
+}
+
 func (bs BaseStation) Time() time.Time {
 	return time.Date(
 		int(bs.RawTime.Year),
@@ -54,7 +58,7 @@ func (bs BaseStation) Time() time.Time {
 	)
 }
 
-func (bs BaseStation) Location() Location {
+func (bs BaseStation) GetLocation() Location {
 	return Location{
 		Longitude: bs.RawLocation.Longitude,
 		Latitude:  bs.RawLocation.Latitude,

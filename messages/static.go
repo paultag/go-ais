@@ -35,6 +35,10 @@ type StaticData struct {
 	PartB StaticDataPartB
 }
 
+func (sd StaticData) GetHeader() Header {
+	return sd.Header
+}
+
 type StaticDataPartA struct {
 	Name string `bits:"40:120"`
 }
