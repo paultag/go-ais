@@ -30,7 +30,7 @@ func (m Message) Unmarshal(target interface{}) error {
 // One useful patter would be to check for a specific type -- or a specific
 // interface (such as a messages.Locatable) to extract the information
 // you need.
-func (m Message) Parse() (interface{}, error) {
+func (m Message) Parse() (messages.Message, error) {
 	switch m.Header.Type {
 	case 1, 2, 3:
 		return m.Position()
