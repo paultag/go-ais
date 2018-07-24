@@ -38,6 +38,10 @@ type Voyage struct {
 	Destination string  `bits:"302:120"`
 }
 
+func (v Voyage) GetName() Name {
+	return Name(v.Name)
+}
+
 func (v Voyage) GetGeometry() Geometry {
 	return Geometry{
 		Bow:       v.RawGeometry.Bow,

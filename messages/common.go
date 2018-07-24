@@ -70,3 +70,9 @@ type Geometry struct {
 	Port      uint8
 	Starboard uint8
 }
+
+type Name string
+
+type Named interface {
+	GetName() Name
+}

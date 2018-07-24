@@ -58,6 +58,10 @@ func (na NavigationAid) GetGeometry() Geometry {
 	}
 }
 
+func (na NavigationAid) GetName() Name {
+	return Name(na.Name)
+}
+
 func (na NavigationAid) GetHeader() Header {
 	return na.Header
 }

@@ -43,6 +43,10 @@ type StaticDataPartA struct {
 	Name string `bits:"40:120"`
 }
 
+func (sdpa StaticDataPartA) GetName() Name {
+	return Name(sdpa.Name)
+}
+
 type StaticDataPartB struct {
 	ShipType      ShipType `bits:"40:8"`
 	VendorID      string   `bits:"48:18"`
@@ -58,6 +62,10 @@ type StaticDataPartB struct {
 	}
 
 	MothershipMMSI uint32 `bits:"132:30"`
+}
+
+func (sdpb StaticDataPartB) GetName() Name {
+	return Name(sdpb.Callsign)
 }
 
 func (sdpb StaticDataPartB) GetGeometry() Geometry {
